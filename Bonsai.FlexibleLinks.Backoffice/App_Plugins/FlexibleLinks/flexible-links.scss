@@ -73,7 +73,7 @@ tree-picker {
     }
 }
 
-tree-picker-item, custom-tree-picker-item {
+tree-picker-item {
     .link {
         border: 2px solid transparent;
         border-width: 2px 0;
@@ -113,16 +113,5 @@ tree-picker-item, custom-tree-picker-item {
 
     .umb-tree-item__loader {
         margin: 0;
-    }
-}
-
-custom-tree-picker {
-    .link {
-        padding: 2px 0;
-
-        .icon {
-            font-size: 20px;
-            line-height: 20px;
-        }
     }
 }
