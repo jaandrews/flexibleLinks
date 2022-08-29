@@ -1,0 +1,12 @@
+﻿<div class="link-types" ng-controller="FlexibleLinks.LinkTypesController as vm">
+    <div class="block" ng-repeat="type in vm.types">
+        <h4>{{type.name}}</h4>
+        <umb-toggle checked="model.value[type.key].enabled" on-click="vm.toggle(type.key)" label-on="Enabled" label-off="Disabled" show-labels="true"></umb-toggle>
+        <div class="settings" ng-hide="!model.value[type.key].enabled">
+            <umb-property property="preValue"
+                          ng-repeat="preValue in type.settings">
+                <umb-property-editor model="preValue" is-pre-value="true"></umb-property-editor>
+            </umb-property>
+        </div>
+    </div>
+</div>

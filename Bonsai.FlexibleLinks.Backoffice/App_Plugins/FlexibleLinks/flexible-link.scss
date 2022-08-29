@@ -1,0 +1,172 @@
+﻿$primaryColor: #1b264f !default;
+$activeColor: #f5c1bc !default;
+
+flexible-link {
+    display: flex;
+    flex-wrap: nowrap;
+
+    .label-container {
+        background-color: $primaryColor;
+        color: white;
+        display: flex;
+        margin: 0 -.5rem;
+        flex-wrap: nowrap;
+        width: calc(100% + 1rem);
+    }
+
+    .new-tab, .link-label {
+        margin: 0 .5rem;
+    }
+
+    .new-tab {
+        display: flex;
+        align-items: center;
+        transition: .3s color;
+        input {
+            margin: 0 .25rem 0 0;
+        }
+        
+        label {
+            margin: .0625rem 0 0 0;
+        }
+
+        &:hover {
+            color: $activeColor;
+        }
+    }
+
+    .link-label {
+        position: relative;
+        flex: 1 1 auto;
+
+        input {
+            opacity: .8;
+            transition: opacity .1s;
+            background-color: transparent;
+            color: $activeColor;
+            width: calc(100% + 1rem);
+            margin-bottom: 0;
+
+            &:focus {
+                opacity: 1;
+
+                + span {
+                    width: 100%;
+                }
+            }
+        }
+
+        span {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: .25rem;
+            width: 0;
+            transition: width .1s;
+            background-color: $activeColor;
+        }
+    }
+
+    .data {
+        flex: 1 1 auto;
+    }
+
+    .type {
+        background-color: $primaryColor;
+        color: white;
+        flex: 0 0 70px;
+        min-height: 70px;
+        min-width: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        cursor: grab;
+    }
+
+    .additional-info {
+        padding: .5rem;
+
+        input {
+            padding: 0;
+            height: auto;
+            width: 100%;
+        }
+
+        input[type="text"], p {
+            margin: 0;
+            font-size: .75rem;
+            line-height: .75rem;
+            font-style: italic;
+        }
+    }
+
+    input[type="text"] {
+        border-width: 0;
+    }
+
+    .actions {
+        height: 32px;
+        flex: 0 0 auto;
+        padding: 0 1rem;
+        align-self: flex-start;
+        background-color: $primaryColor;
+        padding: 3px .5rem;
+        border-radius: 0 0 16px 0;
+        text-align: right;
+        box-sizing: border-box;
+        position: relative;
+        z-index: 2;
+
+        a {
+            color: white;
+            opacity: .8;
+            transition: opacity .1s, color .1s;
+            display: inline-block;
+            position: relative;
+            top: .125rem;
+
+            &:active, &:hover {
+                opacity: 1;
+                color: $activeColor;
+                text-decoration: none;
+            }
+
+            + a {
+                margin-left: .5rem;
+            }
+        }
+    }
+
+    &.disabled-label {
+        .type {
+            flex: 0 0 32px;
+            min-height: 32px;
+            min-width: 32px;
+            font-size: 1.25rem;
+        }
+
+        .data {
+            display: flex;
+            align-items: center;
+            background-color: $primaryColor;
+        }
+
+        .link-label {
+            display: flex;
+            align-items: center;
+
+            p {
+                margin-bottom: 0;
+            }
+        }
+    }
+}
+
+flexible-links {
+    .ui-sortable-helper {
+        .type {
+            cursor: grabbing;
+        }
+    }
+}

@@ -1,0 +1,51 @@
+﻿{
+    "propertyEditors": [
+        {
+            "alias": "Bonsai.FlexibleLinks",
+            "name": "Bonsai: FlexibleLinks",
+            "editor": {
+                "view": "~/App_Plugins/FlexibleLinks/flexible-links.html",
+                "valueType": "JSON"
+            },
+            "prevalues": {
+              "fields": [
+                {
+                  "label": "Allow Multiple",
+                  "description": "Allows multiple links to be selected if true.",
+                  "key": "allowMultiple",
+                  "view": "boolean"
+                },
+                {
+                  "label": "Disable Labels",
+                  "description": "Removes the label control. Use when the content of the link is controlled by another property.",
+                  "key": "disableLabels",
+                  "view": "boolean"
+                },
+                {
+                  "label": "Type Settings",
+                  "description": "Settings for the available link types.",
+                  "key": "typeSettings",
+                  "view": "~/App_Plugins/FlexibleLinks/link-types.html",
+                  "hideLabel": true
+                }
+              ]
+            },
+            "defaultConfig": {
+                "allowMultiple": "1",
+                "disableModalPicker": "1"
+            }
+        }
+    ],
+    "css": [
+        "/app_plugins/flexiblelinks/flexible-links.min.css",
+        "/app_plugins/flexiblelinks/flexible-link.min.css"
+    ],
+    "javascript": [
+        "/app_plugins/flexiblelinks/flexible-link.component.js",
+        "/app_plugins/flexiblelinks/flexible-links.component.js",
+        "/app_plugins/flexiblelinks/link-types.controller.js",
+        "/app_plugins/flexiblelinks/tree-picker.component.js",
+        "/app_plugins/flexiblelinks/tree-picker-item.component.js",
+        "/app_plugins/flexiblelinks/flexible-links.filter.js"
+    ]
+}

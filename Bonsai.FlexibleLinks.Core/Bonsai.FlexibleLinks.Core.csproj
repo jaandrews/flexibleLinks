@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <Product>Bonsai.FlexibleLinks.Core</Product>
+    <PackageId>Bonsai.FlexibleLinks.Core</PackageId>
+    <Title>Bonsai.FlexibleLinks.Core</Title>
+    <Description>An umbraco package that contains the core assemblies for the "Flexible Links" data type. Allows developers to build out their own link types without adding any of the "app_plugin" files.</Description>
+    <Authors>jaandrews</Authors>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Company>Bonsai Media Group</Company>
+    <PackageProjectUrl>https://github.com/jaandrews/flexibleLinks/</PackageProjectUrl>
+    <RepositoryURL>https://github.com/jaandrews/flexibleLinks.git</RepositoryURL>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageTags>umbraco plugin package</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://github.com/jaandrews/flexibleLinks/tree/v10/main/Bonsai.FlexibleLinks.Core/icon.png</PackageIconUrl>
+    <PackageReleaseNotes>
+      - initial release
+    </PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Umbraco.Cms.Core" Version="10.1.0" />
+    <PackageReference Include="Umbraco.Cms.Web.BackOffice" Version="10.1.0" />
+  </ItemGroup>
+
+</Project>

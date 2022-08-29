@@ -1,0 +1,39 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ContentTargetFolders>.</ContentTargetFolders>
+    <Product>Bonsai.FlexibleLinks.Backoffice</Product>
+    <PackageId>Bonsai.FlexibleLinks.Backoffice</PackageId>
+    <Title>Bonsai.FlexibleLinks.Backoffice</Title>
+    <Description>Adds a new data type named "Flexible Links" to the umbraco backoffice. It allows users to add multiple links, similar to the built in "Multi Url Picker" data type, but it can be extended to accomodate additional kinds of links for things like modals, anchor links, etc.</Description>
+    <Authors>jaandrews</Authors>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Company>Bonsai Media Group</Company>
+    <PackageProjectUrl>https://github.com/jaandrews/flexibleLinks/</PackageProjectUrl>
+    <RepositoryURL>https://github.com/jaandrews/flexibleLinks.git</RepositoryURL>
+    <RepositoryType>git</RepositoryType>
+    <PackageReadmeFile>readme.md</PackageReadmeFile>
+    <PackageTags>umbraco plugin package</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+    <PackageIcon>icon.png</PackageIcon>
+    <PackageIconUrl>https://github.com/jaandrews/flexibleLinks/tree/v10/main/Bonsai.FlexibleLinks.Backoffice/icon.png</PackageIconUrl>
+    <PackageReleaseNotes>
+      - initial release
+    </PackageReleaseNotes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="App_Plugins\FlexibleLinks\**">
+      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+      <CopyToPublishDirectory>Always</CopyToPublishDirectory>
+    </Content>
+    <None Include="build\**">
+      <Pack>true</Pack>
+      <PackagePath>buildTransitive</PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bonsai.FlexibleLinks.Core\Bonsai.FlexibleLinks.Core.csproj" />
+  </ItemGroup>
+</Project>

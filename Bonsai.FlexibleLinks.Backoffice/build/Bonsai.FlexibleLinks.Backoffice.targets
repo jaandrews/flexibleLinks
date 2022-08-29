@@ -1,0 +1,21 @@
+﻿<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+    <PropertyGroup>
+        <BonsaiFlexibleLinksBackofficeContentFilesPath>$(MSBuildThisFileDirectory)..\App_Plugins\FlexibleLinks\**\*.*</BonsaiFlexibleLinksBackofficeContentFilesPath>
+    </PropertyGroup>
+
+    <Target Name="CopyBonsaiFlexibleLinksBackofficeAssets" BeforeTargets="Build">
+        <ItemGroup>
+            <BonsaiFlexibleLinksBackofficeContentFiles Include="$(BonsaiFlexibleLinksBackofficeContentFilesPath)" />
+        </ItemGroup>
+        <Message Text="Copying FlexibleLinks files: $(BonsaiFlexibleLinksBackofficeContentFilesPath) - #@(BonsaiFlexibleLinksBackofficeContentFiles->Count()) files" Importance="high" />
+        <Copy SourceFiles="@(BonsaiFlexibleLinksBackofficeContentFiles)" DestinationFiles="@(BonsaiFlexibleLinksBackofficeContentFiles->'$(MSBuildProjectDirectory)\App_Plugins\FlexibleLinks\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="true" />
+    </Target>
+    
+    <Target Name="ClearBonsaiFlexibleLinksBackofficeAssets" BeforeTargets="Clean">
+        <ItemGroup>
+            <BonsaiFlexibleLinksBackofficeDir Include="$(MSBuildProjectDirectory)\App_Plugins\FlexibleLinks\" />
+        </ItemGroup>
+        <Message Text="Clear old FlexibleLinks data" Importance="high" />
+        <RemoveDir Directories="@(BonsaiFlexibleLinksBackofficeDir)" />
+    </Target>
+</Project>
