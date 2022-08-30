@@ -2,7 +2,7 @@
     "propertyEditors": [
         {
             "alias": "Bonsai.FlexibleLinks",
-            "name": "Bonsai: FlexibleLinks",
+            "name": "Bonsai: Flexible Links",
             "editor": {
                 "view": "~/App_Plugins/FlexibleLinks/flexible-links.html",
                 "valueType": "JSON"
@@ -31,8 +31,7 @@
               ]
             },
             "defaultConfig": {
-                "allowMultiple": "1",
-                "disableModalPicker": "1"
+                "allowMultiple": "1"
             }
         }
     ],

@@ -81,7 +81,7 @@
                             ctrl.urlEditable = ctrl._type.picker === 'None' && ctrl._type.manual;
                             ctrl.isChangeable = ctrl._type.picker === 'Content' || ctrl._type.picker === 'Media';
 
-                            if (ctrl.link.id || ctrl._type.picker === 'None') {
+                            if (ctrl.link.id) {
                                 $http.get('/umbraco/backoffice/flexiblelinks/flexiblelinksapi/getinfo', {
                                     params: {
                                         type: ctrl.link.type,

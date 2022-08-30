@@ -1,6 +1,7 @@
 # Flexible Links - for Umbraco 10
 This package adds a new data type named "Flexible Links" to the umbraco backoffice. It allows users to add multiple links, similar to the built in "Multi Url Picker" data type, but it can be extended to accomodate additional kinds of links for things like modals, anchor links, etc. Out of the box it supports the following link types.
 
+- Anchor - Used to create hash based links like "#example" to link to sections of the current page.
 - Content - Used to select content from umbraco content section.
 - Media - Used to select media from umbraco media section.
 - External - Used to manually enter urls
@@ -8,53 +9,20 @@ This package adds a new data type named "Flexible Links" to the umbraco backoffi
 It can be configured to allow one or many links. The label portion of the control can also be removed, which is useful for cases where the link is not text.
 
 ### Adding new links types
-```csharp
-public class ExamplePicker : BasePicker {
+To add a new picker, all you need to do is implement the IFlexibleLinkType interface, making sure that the Key guid is unique to the picker. There are also a couple base classes than can be used to speed up creation of the picker.
 
-    public override Guid Key => new Guid("21696b2b-67fd-47a7-994f-596768e7ea17");
-    public override string Name => "Example"; //This the used to identify the picker when creating a custom picker data type instance.
+- BaseManualLinkType - This is used for links where the url is manually entered. It's used for the [Anchor](https://github.com/jaandrews/flexibleLinks/blob/v10/main/Bonsai.FlexibleLinks.Core/Types/AnchorLinkType.cs) and [External](https://github.com/jaandrews/flexibleLinks/blob/v10/main/Bonsai.FlexibleLinks.Core/Types/ExternalLinkType.cs) link types out of the box.
+- BasePickedLinkType - This is for pickers that use umbraco content or media. It's used by the [Content](https://github.com/jaandrews/flexibleLinks/blob/v10/main/Bonsai.FlexibleLinks.Core/Types/ContentLinkType.cs) and [Media](https://github.com/jaandrews/flexibleLinks/blob/v10/main/Bonsai.FlexibleLinks.Core/Types/MediaLinkType.cs) link types out of the box.
 
-    public override IEnumerable<PickerOption> Children(string id, string culture) {
-        ...
-    }
+### Configuring the data type
+![Initial Configuration](https://github.com/jaandrews/flexibleLinks/blob/v10/main/Bonsai.FlexibleLinks.Backoffice/images/data-type-init-creation.png)
 
-    public override IEnumerable<PickerOption> GetInfo(IEnumerable<string> ids, string culture) {
-        ...
-    }
+There are 3 key pieces to the configuration of the Flexible Links data type.
 
-    public override IEnumerable<PickerOption> Search(string searchTerm, string culture) {
-        ...
-    }
-}
-```
-### BaseAsyncPicker - Used for asynchronous data sources
-```csharp
-public class ExampleAsyncPicker : BaseAsyncPicker {
+- Allow Multiple - When active, this will allow multiple links to be selected.
+- Disable Labels - This removes the label piece of the control. This is useful for when the links are images or icons rather than text.
+- Pickers - This is a list of all the pickers that have been installed. By default they are disabled. When a picker is enabled, it will also reveal any settings configured in the Settings property of the picker, as shown below.
 
-    public override Guid Key => new Guid("2470e2dd-b784-4ef2-a879-cffd65a494e5");
-    public override string Name => "Example Async"; //This the used to identify the picker when creating a custom picker data type instance.
+![Settings appear when picker enabled](https://github.com/jaandrews/flexibleLinks/blob/v10/main/Bonsai.FlexibleLinks.Backoffice/images/data-type-picker-settings.png)
 
-    public override Task<IEnumerable<PickerOption>> ChildrenAsync(string id, string culture) {
-        ...
-    }
-
-    public override Task<IEnumerable<PickerOption>> GetInfoAsync(IEnumerable<string> ids, string culture) {
-        ...
-    }
-
-    public override Task<IEnumerable<PickerOption>> SearchAsync(string searchTerm, string culture) {
-        ...
-    }
-}
-```
-
-The Children and ChildrenAsync methods are used to content tree in the picker, where the id is the id of the parent content. The root id will always be "-1" This is the same approach umbraco uses for its TreeControllers (see [here](https://our.umbraco.com/documentation/extending/section-trees/trees/)).
-
-The GetInfo and GetInfoAsync methods are used to retrieve data about the currently selected items. This is needed since the control only stores the id, similar to how umbraco content pickers store a udi and pull in the relevent information from that.
-
-The Search and SearchAsync methods are used to return a list of options matching the provided searchTerm.
-
-See the code for the [PickerPicker](https://github.com/jaandrews/customPicker/blob/v10/main/CustomPicker.Core/Pickers/PickerPicker.cs) for a full implementation of a picker. This is the picker used to select the picker when creating the data type instance.
-
-
-
+### Using the data type

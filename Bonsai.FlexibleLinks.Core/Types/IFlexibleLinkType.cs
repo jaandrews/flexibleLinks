@@ -64,28 +64,28 @@ namespace Bonsai.FlexibleLinks.Core.Types {
         /// </summary>
         /// <param name="id">The id of the link.</param>
         /// <param name="culture">The current culture code.</param>
-        /// <returns></returns>
+        /// <returns>Meta data for the link.</returns>
         SelectionInfo GetInfo(string id, string culture);
         /// <summary>
         /// Gets information about multiple links from there ids. Often works by iterating through the ids and call the singular GetInfo, but this is not an option for some data sources.
         /// </summary>
         /// <param name="ids">The ids of the link to get more information about.</param>
         /// <param name="culture">The current culture code.</param>
-        /// <returns></returns>
+        /// <returns>Meta data for the links.</returns>
         IEnumerable<SelectionInfo> GetInfo(IEnumerable<string> ids, string culture);
         /// <summary>
         /// Gets the children for the link with the current id.
         /// </summary>
         /// <param name="id">The id of the curreent link.</param>
         /// <param name="culture">The current culture code.</param>
-        /// <returns></returns>
+        /// <returns>Meta data for children of the link.</returns>
         IEnumerable<SelectionInfo> GetTree(string id, string culture);
         /// <summary>
         /// Returns content that matches the provided search term.
         /// </summary>
         /// <param name="searchTerm">The text to search for.</param>
         /// <param name="culture">The current culture code.</param>
-        /// <returns></returns>
+        /// <returns>Meta data for links that match the searchTerm.</returns>
         IEnumerable<SelectionInfo> Search(string searchTerm, string culture);
     }
 }
