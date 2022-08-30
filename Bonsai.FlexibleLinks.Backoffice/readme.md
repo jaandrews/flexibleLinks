@@ -1,7 +1,13 @@
 # Flexible Links - for Umbraco 10
-This package adds a new data type named "Flexible Links" to the umbraco backoffice. It allows users to add multiple links, similar to the built in "Multi Url Picker" data type, but it can be extended to accomodate additional kinds of links for things like modals, anchor links, etc. Out of the box
+This package adds a new data type named "Flexible Links" to the umbraco backoffice. It allows users to add multiple links, similar to the built in "Multi Url Picker" data type, but it can be extended to accomodate additional kinds of links for things like modals, anchor links, etc. Out of the box it supports the following link types.
 
-### BasePicker - Used for synchronous data sources
+- Content - Used to select content from umbraco content section.
+- Media - Used to select media from umbraco media section.
+- External - Used to manually enter urls
+
+It can be configured to allow one or many links. The label portion of the control can also be removed, which is useful for cases where the link is not text.
+
+### Adding new links types
 ```csharp
 public class ExamplePicker : BasePicker {
 
