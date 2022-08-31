@@ -6,7 +6,7 @@ using Umbraco.Extensions;
 
 namespace Bonsai.FlexibleLinks.Core.Types {
     public class ContentLinkType: BasePickedLinkType {
-        public IEnumerable<string> ExcludedContentTypes => new[] { "data" };
+        public IEnumerable<string> ExcludedContentTypes => Enumerable.Empty<string>();
         public override PickerType Picker => PickerType.Content;
         public override bool AllowExtra => true;
         public override bool AllowNewTab => true;

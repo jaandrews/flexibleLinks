@@ -80,9 +80,9 @@ tree-picker-item {
         position: relative;
         background-color: transparent;
         transition: .3s color, .3s background-color;
-        padding-left: 20px;
         display: flex;
         align-items: center;
+        padding: 7px 0 5px 20px;
 
         &:hover {
             color: #2152a3;
@@ -93,9 +93,12 @@ tree-picker-item {
         &.selected {
             background-color: #f5c1bc;
             color: #1b264f;
+
             .icon {
-                content: '\e165';
-                color: #2bc37c;
+                &::before {
+                    content: '\e165';
+                    color: #2bc37c;
+                }
             }
         }
 
@@ -105,7 +108,7 @@ tree-picker-item {
             }
         }
 
-        a{
+        a {
             flex: 1 1 auto;
             text-overflow: ellipsis;
         }

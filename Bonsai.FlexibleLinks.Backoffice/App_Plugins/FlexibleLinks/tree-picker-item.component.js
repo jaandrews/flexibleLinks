@@ -23,7 +23,7 @@
                     <a class="umb-tree-item__label" ng-click="vm.toggle()" title="{{::vm.item.title}}">{{vm.item.name}}</a>
                     <umb-loader ng-show="vm.loading" position="bottom" class="umb-tree-item__loader"></umb-loader>
                 </div>
-                <div ng-if="vm.children">
+                <div ng-if="vm.children" ng-hide="!vm.item.expanded">
                     <tree-picker-item item="item" depth="vm.depth+1" ng-repeat="item in vm.children"></tree-picker-item>
                 </div>
             `,

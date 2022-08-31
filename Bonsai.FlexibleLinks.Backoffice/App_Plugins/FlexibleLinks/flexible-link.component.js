@@ -50,7 +50,7 @@
                 </div>
                 <div class="actions">
                     <a ng-if="$ctrl.isChangeable" ng-click="$ctrl.changeLink()"><span class="icon icon-info"></span></a>
-                    <a ng-if="$ctrl.isChangeable" ng-click="$ctrl.setLink()"><span class="icon icon-edit"></span></a>
+                    <a ng-if="$ctrl.isUpdateable" ng-click="$ctrl.setLink()"><span class="icon icon-edit"></span></a>
                     <a ng-click="$ctrl.removeLink()"><span class="icon icon-delete"></span></a>
                 </div>
             `,
@@ -80,6 +80,7 @@
                             ctrl._allowNewTab = type.allowNewTab;
                             ctrl.urlEditable = ctrl._type.picker === 'None' && ctrl._type.manual;
                             ctrl.isChangeable = ctrl._type.picker === 'Content' || ctrl._type.picker === 'Media';
+                            ctrl.isUpdateable = ctrl._type.picker !== 'None';
 
                             if (ctrl.link.id) {
                                 $http.get('/umbraco/backoffice/flexiblelinks/flexiblelinksapi/getinfo', {
@@ -131,7 +132,7 @@
                     }
                     editorService[service](settings);
                     break;
-                case 3:
+                case 'Custom':
                     //editorService.open({
 
                     //});
@@ -165,9 +166,45 @@
                 case 'Content': case 'Media':
                     editorService[ctrl._type.picker === 'Media' ? 'mediaPicker' : 'contentPicker'](settings);
                     break;
-                case 2:
-                    break;
-                case 3:
+                case 'Custom':
+                    editorService.open({
+                        view: ctrl._type.pickerPath,
+                        size: 'small',
+                        type: ctrl._type.key,
+                        multiPicker: false,
+                        submit: function (innerResponse) {
+                            var selections = innerResponse.selection;
+                            if (selections.length) {
+                                var ids = [];
+                                for (var i = 0; i < selections.length; i++) {
+                                    var innerSelection = selections[i];
+                                    ids.push(innerSelection.id);
+                                    ctrl.renderModel.push({
+                                        id: innerSelection.id,
+                                        label: ctrl.disableLabel ? null : innerSelection.name,
+                                        type: selection.key,
+                                        node: {
+                                            name: innerSelection.name,
+                                            icon: innerSelection.icon
+                                        }
+                                    });
+                                    if (!ctrl.model) {
+                                        ctrl.model = [];
+                                    }
+                                    ctrl.model.push({
+                                        id: innerSelection.id,
+                                        label: ctrl.disableLabel ? null : innerSelection.name,
+                                        type: selection.key
+                                    });
+                                }
+                                ctrl.ngModel.$setViewValue(ctrl.model);
+                            }
+                            editorService.close();
+                        },
+                        close: function () {
+                            editorService.close();
+                        }
+                    });
                     break;
             }
         };

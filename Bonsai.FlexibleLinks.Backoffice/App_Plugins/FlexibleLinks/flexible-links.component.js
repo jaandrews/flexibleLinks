@@ -186,7 +186,7 @@
                 }
                 editorService[service](settings);
             }
-            else if (selection.picker === 'Modal') {
+            else if (selection.picker === 'Custom') {
                 editorService.open({
                     view: selection.pickerPath,
                     size: 'small',

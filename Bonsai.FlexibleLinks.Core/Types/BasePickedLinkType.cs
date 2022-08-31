@@ -3,7 +3,7 @@ using Umbraco.Cms.Core.Models.ContentEditing;
 
 namespace Bonsai.FlexibleLinks.Core.Types {
     public abstract class BasePickedLinkType: IFlexibleLinkType {
-        public abstract PickerType Picker { get; }
+        public virtual PickerType Picker => PickerType.Custom;
         public bool Manual => false;
         public abstract bool AllowExtra { get; }
         public abstract bool AllowNewTab { get; }

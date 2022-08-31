@@ -18,7 +18,7 @@
                                 <umb-load-indicator ng-if="vm.loading">
                                 </umb-load-indicator>
                                 <!-- FILTER -->
-                                <div class="umb-control-group -no-border">
+                                <div class="umb-control-group">
                                     <div class="form-search">
                                         <i class="icon-search"></i>
                                         <input type="text"
@@ -32,7 +32,7 @@
                                                umb-auto-focus>
                                     </div>
                                 </div>
-                                <div class="umb-actions umb-actions-child">
+                                <div class="umb-tree">
                                     <tree-picker-item item="item" depth="1" ng-repeat="item in vm.items"></tree-picker-item>
                                 </div>
 
