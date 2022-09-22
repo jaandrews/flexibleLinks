@@ -9,7 +9,7 @@
     <Title>Bonsai.FlexibleLinks.Core</Title>
     <Description>An umbraco package that contains the core assemblies for the "Flexible Links" data type. Allows developers to build out their own link types without adding any of the "app_plugin" files.</Description>
     <Authors>jaandrews</Authors>
-    <PackageVersion>1.0.0</PackageVersion>
+    <PackageVersion>1.0.1</PackageVersion>
     <Company>Bonsai Media Group</Company>
     <PackageProjectUrl>https://github.com/jaandrews/flexibleLinks/</PackageProjectUrl>
     <RepositoryURL>https://github.com/jaandrews/flexibleLinks.git</RepositoryURL>
@@ -20,7 +20,7 @@
     <PackageIcon>icon.png</PackageIcon>
     <PackageIconUrl>https://github.com/jaandrews/flexibleLinks/tree/v10/main/Bonsai.FlexibleLinks.Core/icon.png</PackageIconUrl>
     <PackageReleaseNotes>
-      - initial release
+      - removed test picker that was accidentally left in package
     </PackageReleaseNotes>
   </PropertyGroup>
 
